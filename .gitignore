@@ -1,0 +1,9 @@
+ytspot/.env
+serviceaccount.json
+credentials.json
+token.json
+.cache
+main.py
+ytmain.py
+*.sqlite3
+.vscode
