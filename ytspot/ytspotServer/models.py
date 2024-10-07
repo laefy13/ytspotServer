@@ -1,4 +1,6 @@
 from django.db import models
+from django import forms
+from djongo import models as mongoModels
 from django.core.validators import RegexValidator
 
 
@@ -14,5 +16,20 @@ class SpotifyUser(models.Model):
             )
         ],
     )
+    refresh_token = models.CharField(max_length=100)
     token = models.CharField(max_length=100)
+    browser_id = models.CharField(max_length=255)
     added_at = models.DateTimeField(auto_now_add=True)
+
+
+class PlaylistItems(mongoModels.Model):
+    item = mongoModels.CharField(max_length=255)
+
+    class Meta:
+        abstract = True
+
+
+class PlaylistsQueries(mongoModels.Model):
+    playlist_id = mongoModels.CharField(max_length=255)
+    playlist_time = mongoModels.IntegerField(default=0)
+    playlist_items = mongoModels.JSONField()

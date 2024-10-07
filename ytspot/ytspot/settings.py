@@ -24,15 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-88mn$cjn)7=oc429ku_64bn^$pijic!ah^+k*6^(i47h8xweb*"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    "lemon-grass-0b1c6b800.5.azurestaticapps.net",
     "accounts.spotify.com",
-    "ytspotserver.azurewebsites.net",
+    "ytspotapi.azurewebsites.net",
+    "zealous-bay-0c9670c00.5.azurestaticapps.net",
 ]
 
 
@@ -89,7 +89,14 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
-    }
+    },
+    "mongodb": {
+        "ENGINE": "djongo",
+        "NAME": "ytspot",
+        "CLIENT": {
+            "host": os.getenv("MONGO_URL"),
+        },
+    },
 }
 
 
@@ -145,15 +152,12 @@ REST_FRAMEWORK = {
 
 # CORS
 CORS_ALLOWED_ORIGINS = [
-    "https://lemon-grass-0b1c6b800.5.azurestaticapps.net",
     "https://accounts.spotify.com",
-    "https://ytspotserver.azurewebsites.net",
-    "http://lemon-grass-0b1c6b800.5.azurestaticapps.net",
-    "http://accounts.spotify.com",
-    "http://ytspotserver.azurewebsites.net",
+    "https://ytspotapi.azurewebsites.net",
+    "https://zealous-bay-0c9670c00.5.azurestaticapps.net",
 ]
 
-CORS_ALLOW_HEADERS = ["X-Spotify-UUID"]
+CORS_ALLOW_HEADERS = ["X-Spotify-UUID", "X-Browser-ID"]
 
 SERVICE_ACCOUNT_FILE_PATH = os.getenv("SERVICE_ACCOUNT_FILE_PATH")
 SPOTIPY_CLIENT_ID = os.getenv("SPOTIPY_CLIENT_ID")
