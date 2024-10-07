@@ -1,6 +1,0 @@
-SERVICE_ACCOUNT_FILE_PATH='./config/serviceaccount.json'
-SPOTIPY_CLIENT_ID=690259b6a95c4e6d924b57644be6974b
-SPOTIPY_CLIENT_SECRET=a02157ebb35a46e6a7ab2ab9492d34fc
-SELF_URL='https://ytspotapi.azurewebsites.net'
-MAIN_URL='https://zealous-bay-0c9670c00.5.azurestaticapps.net/'
-SECRET_KEY="django-insecure-88mn$cjn)7=oc429ku_64bn^$pijic!ah^+k*6^(i47h8xweb*"
